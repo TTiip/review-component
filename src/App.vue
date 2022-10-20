@@ -7,29 +7,50 @@
 <script lang="ts">
   import { Table } from '@/components/index'
   import { defineComponent } from 'vue-demi'
+  import type { ReviewConfigType } from '@/type'
 
   export default defineComponent({
     components: {
       Table
     },
     setup () {
-      const reviewConfig = {
-        review_api_url: '/api/review/list',
-        review_table_head: [
+      const reviewConfig: ReviewConfigType = {
+        reviewApiUrl: '/api/review/list',
+        reviewTableHead: [
           {
             label: '复核标题',
-            key: 'reviewTitle',
-            width: 200
+            key: 'reviewTitle'
           },
           {
             label: '提交人',
-            key: 'publishUser',
-            width: 200
+            key: 'publishUser'
           },
           {
             label: '发布时间',
-            key: 'publishDate',
-            width: 200
+            key: 'publishDate'
+          }
+        ],
+        reviewTableConfig: [
+          {
+            type: 'string',
+            code: 'reviewTitle'
+          },
+          {
+            type: 'radio',
+            code: 'publishUser',
+            mapData: {
+              0: '饺子',
+              1: '包子',
+              2: '面条'
+            }
+          },
+          {
+            type: 'radio',
+            code: 'publishDate',
+            mapData: {
+              0: '否',
+              1: '是'
+            }
           }
         ]
       }

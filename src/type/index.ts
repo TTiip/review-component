@@ -1,8 +1,14 @@
 export interface ReviewConfigType {
-	review_api_url: string,
-	review_table_head: {
+	reviewApiUrl: string,
+	reviewTableHead: {
 		label: string,
-		key: string,
-		width: number
+		key: string
+	}[],
+	reviewTableConfig: {
+		type: 'string' | 'radio'
+		code: string
+		oldValue?: any
+		newValue?: any
+		mapData?: any
 	}[]
 }

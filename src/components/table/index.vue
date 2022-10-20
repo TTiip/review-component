@@ -1,8 +1,18 @@
 <template>
-  <!-- <div>{{ tableList }}</div> -->
-  <ul class="flex">
-    <li v-for="item of review_table_head" :key="item.key" :style="{ 'width': `${item.width}px` }">{{ item.label }}</li>
-  </ul>
+  <div>
+    <div>{{ reviewTableConfig }}</div>
+    <table>
+      <thead>
+        <th class="w-[200px] text-center" v-for="item of reviewTableHead" :key="item.key">{{ item.label }}</th>
+      </thead>
+      <tbody>
+        <tr v-for="(item, index) of tableList" :key="index">
+          <td class="w-[200px] text-center" v-for="it of reviewTableConfig" :key="it.code">{{ item[it.code] }}</td>
+          <td><button @click="testClick(item)">click</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 <script lang="ts">
   import { defineComponent, ref, PropType } from 'vue-demi'
@@ -20,19 +30,29 @@
     },
     setup (props) {
       const tableList = ref([])
-      const { review_api_url, review_table_head } = props.reviewConfig!
+      const {
+        reviewApiUrl,
+        reviewTableHead,
+        reviewTableConfig
+      } = props.reviewConfig!
+
+      function testClick(item: any) {
+        console.log(item)
+      }
 
       axios({
-        url: review_api_url,
+        url: reviewApiUrl,
         method: 'GET'
       }).then(res => {
         const data = coverData(res)
-        tableList.value = data.reviewList[0]
+        tableList.value = data.reviewList
         console.log(data, 'data')
       })
       return {
         tableList,
-        review_table_head
+        reviewTableHead,
+        reviewTableConfig,
+        testClick
       }
     }
   })
