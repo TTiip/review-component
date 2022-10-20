@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div>{{ reviewTableConfig }}</div>
+    <div>{{ reviewTableHead }}</div>
     <table>
       <thead>
-        <th class="w-[200px] text-center" v-for="item of reviewTableHead" :key="item.key">{{ item.label }}</th>
+        <th class="w-[200px] text-center" v-for="item of Object.keys(reviewTableHead)" :key="item">{{ reviewTableHead[item]?.label }}</th>
       </thead>
       <tbody>
         <tr v-for="(item, index) of tableList" :key="index">
-          <td class="w-[200px] text-center" v-for="it of reviewTableConfig" :key="it.code">{{ item[it.code] }}</td>
+          <td class="w-[200px] text-center" v-for="it of Object.keys(reviewTableHead)" :key="it">{{ item[it] }}</td>
           <td><button @click="testClick(item)">click</button></td>
         </tr>
       </tbody>
@@ -17,7 +17,7 @@
 <script lang="ts">
   import { defineComponent, ref, PropType } from 'vue-demi'
   import axios from 'axios'
-  import { coverData } from '@/utils'
+  import { checkType, coverData } from '@/utils'
   import type { ReviewConfigType } from '@/type'
 
   export default defineComponent({
@@ -37,7 +37,10 @@
       } = props.reviewConfig!
 
       function testClick(item: any) {
-        console.log(item)
+        console.log(item.modifyContent, 'item.modifyContent')
+        if (checkType(item.modifyContent, 'string')) {
+          console.log(JSON.parse(item.modifyContent))
+        }
       }
 
       axios({

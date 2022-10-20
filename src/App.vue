@@ -16,43 +16,37 @@
     setup () {
       const reviewConfig: ReviewConfigType = {
         reviewApiUrl: '/api/review/list',
-        reviewTableHead: [
-          {
-            label: '复核标题',
-            key: 'reviewTitle'
+        reviewTableHead: {
+          reviewTitle: {
+            label: '复核标题'
           },
-          {
-            label: '提交人',
-            key: 'publishUser'
+          publishUser: {
+            label: '提交人'
           },
-          {
-            label: '发布时间',
-            key: 'publishDate'
+          publishDate: {
+            label: '发布时间'
           }
-        ],
-        reviewTableConfig: [
-          {
-            type: 'string',
-            code: 'reviewTitle'
-          },
-          {
+        },
+        reviewTableConfig: {
+          publishUser: {
             type: 'radio',
-            code: 'publishUser',
             mapData: {
               0: '饺子',
               1: '包子',
               2: '面条'
             }
           },
-          {
+          reviewTitle: {
+            type: 'string'
+          },
+          publishDate: {
             type: 'radio',
-            code: 'publishDate',
             mapData: {
               0: '否',
               1: '是'
             }
           }
-        ]
+        }
       }
 
       return {
