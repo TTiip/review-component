@@ -19,17 +19,17 @@
           {
             label: '复核标题',
             key: 'reviewTitle',
-            width: '200'
+            width: 200
           },
           {
             label: '提交人',
             key: 'publishUser',
-            width: '200'
+            width: 200
           },
           {
             label: '发布时间',
             key: 'publishDate',
-            width: '200'
+            width: 200
           }
         ]
       }
