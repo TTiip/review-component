@@ -1,7 +1,7 @@
 <template>
   <!-- <div>{{ tableList }}</div> -->
   <ul class="flex">
-    <li v-for="item of review_table_head" :key="item.key" :style={ width: `${item.width}px` }>{{ item.label }}</li>
+    <li v-for="item of review_table_head" :key="item.key" :style="{ 'width': `${item.width}px` }">{{ item.label }}</li>
   </ul>
 </template>
 <script lang="ts">
