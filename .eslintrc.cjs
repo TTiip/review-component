@@ -13,6 +13,7 @@ module.exports = {
     'plugin:prettier/recommended'
   ],
   rules: {
+    'vue/no-reserved-component-names': '2',
     // override/add rules settings here, such as:
     // 'vue/no-unused-vars': 'error'
     'prettier/prettier': [
