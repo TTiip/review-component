@@ -1,5 +1,5 @@
 import '@/libs/tailwindcss/index.css'
 
-import EipInputVue from './eipControl/TextInput.vue'
+import Table from './table/index.vue'
 
-export default EipInputVue
+export { Table }
