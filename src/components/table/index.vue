@@ -7,7 +7,7 @@
       </thead>
       <tbody>
         <tr v-for="(item, index) of tableList" :key="index">
-          <td class="w-[200px] text-center" v-for="it of Object.keys(reviewTableHead)" :key="it">{{ item[it] }}</td>
+          <td class="w-[200px] text-center" v-for="it of Object.keys(reviewTableHead)" :key="it">{{ formatItemData(item, it) }}</td>
           <td><button @click="testClick(item)">click</button></td>
         </tr>
       </tbody>
@@ -43,6 +43,17 @@
         }
       }
 
+      function formatItemData (data: any, key: string) {
+        console.log(data, key)
+        return (
+          reviewTableConfig ?
+            reviewTableConfig[key].format ?
+              reviewTableConfig[key].format!(data) :
+              'aa'
+            : data[key]
+        )
+      }
+
       axios({
         url: reviewApiUrl,
         method: 'GET'
@@ -55,6 +66,7 @@
         tableList,
         reviewTableHead,
         reviewTableConfig,
+        formatItemData,
         testClick
       }
     }

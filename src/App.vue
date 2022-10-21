@@ -30,10 +30,8 @@
         reviewTableConfig: {
           publishUser: {
             type: 'radio',
-            mapData: {
-              0: '饺子',
-              1: '包子',
-              2: '面条'
+            format: (item: any) => {
+              return `${item.publishUser} ~~`
             }
           },
           reviewTitle: {
@@ -41,9 +39,8 @@
           },
           publishDate: {
             type: 'radio',
-            mapData: {
-              0: '否',
-              1: '是'
+            format: (item: any) => {
+              return `${item.publishDate} !!`
             }
           }
         }

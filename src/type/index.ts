@@ -8,6 +8,7 @@ export interface ReviewConfigType {
 	reviewTableConfig: {
 		[propName: string]: {
 			type: 'string' | 'radio'
+			format?: (...arg: any) => any
 			oldValue?: any
 			newValue?: any
 			mapData?: any
