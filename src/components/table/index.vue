@@ -49,7 +49,7 @@
           reviewTableConfig ?
             reviewTableConfig[key].format ?
               reviewTableConfig[key].format!(data) :
-              'aa'
+              data[key]
             : data[key]
         )
       }
